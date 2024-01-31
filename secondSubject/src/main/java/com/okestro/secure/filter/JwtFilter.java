@@ -23,7 +23,7 @@ public class JwtFilter implements Filter {
 
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
         Object attribute = request.getAttribute(VerifyUserFilter.AUTHENTICATE_USER);
         if (attribute instanceof AuthenticationUser) {
             AuthenticationUser authenticationUser = (AuthenticationUser) attribute;
