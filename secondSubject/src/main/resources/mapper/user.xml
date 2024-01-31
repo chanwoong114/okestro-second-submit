@@ -10,6 +10,10 @@
         select passwd from user where email=#{email}
     </select>
 
+    <select id="findAuthUserByRefreshToken" parameterType="String" resultType="AuthenticationUser">
+        select user_id, email from user where refresh_token=#{refreshToken}
+    </select>
+
     <insert id="signUp" parameterType="CreateUserDto">
         insert into user(email, passwd, name, nickname, refresh_token)
         values (#{email}, #{passwd}, #{name}, #{nickname}, #{refreshToken})

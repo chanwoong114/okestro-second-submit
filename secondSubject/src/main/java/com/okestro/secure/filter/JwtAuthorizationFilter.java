@@ -23,7 +23,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthorizationFilter implements Filter {
 
-    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**", "/swagger*", "/api/user/sign-up"};
+    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**", "/swagger*", "/api/user/sign-up", "/api/auth/**"};
     private final JwtProvider jwtProvider;
     private final ObjectMapper objectMapper;
 

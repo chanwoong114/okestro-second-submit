@@ -1,5 +1,6 @@
 package com.okestro.user.repository;
 
+import com.okestro.secure.dto.AuthenticationUser;
 import com.okestro.user.dto.CreateUserDto;
 import com.okestro.user.dto.UpdateRefreshTokenDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,6 @@ public interface UserRepository {
     void signUp(CreateUserDto createUserDto);
 
     void updateRefreshToken(UpdateRefreshTokenDTO updateRefreshTokenDTO);
+
+    AuthenticationUser findAuthUserByRefreshToken(String refreshToken);
 }
