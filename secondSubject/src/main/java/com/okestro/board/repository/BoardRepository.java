@@ -17,6 +17,6 @@ public interface BoardRepository {
     Integer findUserIdById(Long boardId);
 
     List<BoardListResponse> findBoardList();
-    BoardResponse findBoardDetail(Long boardId);
+    List<BoardListResponse> findBoardListByUserId(Integer userId);
     void deleteBoard(Long boardId);
 }

@@ -19,8 +19,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
 
-    public void createBoard(CreateBoardRequest createBoardRequest, String email) {
-        Integer userId = userRepository.findUserIdByEmail(email);
+    public void createBoard(CreateBoardRequest createBoardRequest, Integer userId) {
         checkTitle(createBoardRequest.getTitle());
         Board board = Board.builder()
                 .userId(userId)
@@ -33,11 +32,12 @@ public class BoardService {
         boardRepository.createBoard(board);
     }
 
-    public void updateBoard(UpdateBoardRequest updateBoardRequest, String email) {
+    public void updateBoard(UpdateBoardRequest updateBoardRequest, Integer userId) {
         BoardResponse boardResponse = boardRepository.findBoardById(updateBoardRequest.getBoardId());
         if (boardResponse == null) {
             throw new RuntimeException();
         }
+        checkUserId(boardResponse.getUserId(), userId);
         checkTitle(updateBoardRequest.getTitle());
 
         BoardResponse updatedBoard = BoardResponse.builder()
@@ -53,19 +53,23 @@ public class BoardService {
     }
 
     public BoardResponse getBoardDetail(Long boardId) {
-        return boardRepository.findBoardDetail(boardId);
+        return boardRepository.findBoardById(boardId);
     }
 
-    public void deleteBoard(Long boardId, String email) {
-        if (!Objects.equals(boardRepository.findUserIdById(boardId), userRepository.findUserIdByEmail(email))) {
-            throw new RuntimeException("작성자만 삭제 가능합니다.");
-        }
+    public void deleteBoard(Long boardId, Integer userId) {
+        checkUserId(boardRepository.findUserIdById(boardId), userId);
         boardRepository.deleteBoard(boardId);
     }
 
     public void checkTitle(String title) {
         if (title == null) {
             throw new RuntimeException("제목이 없습니다.");
+        }
+    }
+
+    public void checkUserId(Integer id1, Integer id2) {
+        if (!(Objects.equals(id1, id2))) {
+            throw new RuntimeException("작성자와 동일하지 않습니다.");
         }
     }
 

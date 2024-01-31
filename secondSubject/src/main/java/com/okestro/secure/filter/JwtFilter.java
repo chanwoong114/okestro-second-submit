@@ -6,6 +6,7 @@ import com.okestro.secure.JwtProvider;
 import com.okestro.secure.dto.AuthenticationUser;
 import com.okestro.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 
 import javax.servlet.*;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @RequiredArgsConstructor
 public class JwtFilter implements Filter {
 
@@ -36,8 +38,8 @@ public class JwtFilter implements Filter {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
+            return;
         }
-
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         httpServletResponse.sendError(HttpStatus.BAD_REQUEST.value());
     }

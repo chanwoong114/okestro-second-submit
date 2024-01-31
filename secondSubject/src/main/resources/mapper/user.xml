@@ -12,12 +12,12 @@
 
     <insert id="signUp" parameterType="CreateUserDto">
         insert into user(email, passwd, name, nickname, refresh_token)
-        values (#{email}, #{passwd}, #{name}, #{nickname}, #{refresh_token})
+        values (#{email}, #{passwd}, #{name}, #{nickname}, #{refreshToken})
     </insert>
 
     <update id="updateRefreshToken" parameterType="UpdateRefreshTokenDTO">
         update user
-        set refresh_token=#{refresh_token}
+        set refresh_token=#{refreshToken}
         where email=#{email}
     </update>
 </mapper>

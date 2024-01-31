@@ -25,15 +25,12 @@ public class VerifyUserFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         if (httpServletRequest.getMethod().equals("POST")) {
-            log.info("포트트 요청까지는 성공");
+
             try {
                 LoginUserRequest loginUserRequest = objectMapper.readValue(request.getReader(), LoginUserRequest.class);
-                log.info("매퍼 까지는 성공");
                 VerifyUser verifyUser = userService.verifyUser(loginUserRequest);
-                log.info(verifyUser.isValid() + " : 로그인 정보");
                 if (verifyUser.isValid()) {
                     request.setAttribute(AUTHENTICATE_USER, new AuthenticationUser(loginUserRequest.getEmail(), verifyUser.getUserId()));
-                    log.info("로그인까지는 성공");
                 } else {
                     throw new IllegalArgumentException();
                 }

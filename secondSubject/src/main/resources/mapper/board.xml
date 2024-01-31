@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybartis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.okestro.user.repository.BoardRepository">
+<mapper namespace="com.okestro.board.repository.BoardRepository">
+    <select id="findBoardById" parameterType="Long" resultType="BoardResponse">
+        select board_id, user_id, title, content, created_at, updated_at
+        from board
+        where board_id=#{boardId}
+    </select>
+    
+    <select id="findBoardList" resultType="BoardListResponse">
+        select board_id, title, updated_at
+        from board
+    </select>
+    
+    <select id="findUserIdById" parameterType="Long" resultType="Integer">
+        select user_id
+        from board
+        where board_id=#{boardId}
+    </select>
+    
+    <select id="findBoardListByUserId" parameterType="Integer" resultType="BoardListResponse">
+        select board_id, title, updated_at
+        from board
+        where user_id=#{userId}
+    </select>
+    
+    <insert id="createBoard" parameterType="Board">
+        insert into board(user_id, title, content, created_at, updated_at) 
+        values (#{userId}, #{title}, #{content}, #{createdAt}, #{updatedAt})
+    </insert>
+    
+    <update id="updateBoard" parameterType="BoardResponse">
+        update board
+        set title=#{title}, content=#{content}, updated_at=#{updatedAt}
+        where board_id=#{boardId}
+    </update>
 
+    <delete id="deleteBoard" parameterType="Long">
+        delete from board
+        where board_id=#{boardId}
+    </delete>
 </mapper>
