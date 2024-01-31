@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybartis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.okestro.user.repository.UserRepository">
+    <select id="findUserIdByEmail" parameterType="String" resultType="Integer">
+        select user_id from user where email=#{email}
+    </select>
+
+    <select id="findPasswdByEmail" parameterType="String" resultType="String">
+        select passwd from user where email=#{email}
+    </select>
+
+    <insert id="signUp" parameterType="CreateUserDto">
+        insert into user(email, passwd, name, nickname, refresh_token)
+        values (#{email}, #{passwd}, #{name}, #{nickname}, #{refresh_token})
+    </insert>
+
+    <update id="updateRefreshToken" parameterType="UpdateRefreshTokenDTO">
+        update user
+        set refresh_token=#{refresh_token}
+        where email=#{email}
+    </update>
+</mapper>
