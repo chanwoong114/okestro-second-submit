@@ -1,7 +1,9 @@
 package com.okestro.user.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.okestro.secure.Jwt;
 import com.okestro.secure.dto.AuthenticationUser;
+import com.okestro.secure.dto.LoginUserRequest;
 import com.okestro.secure.filter.JwtAuthorizationFilter;
 import com.okestro.user.dto.CreateUserRequest;
 import com.okestro.user.dto.RefreshTokenDto;
@@ -33,5 +35,15 @@ public class UserController {
     public ResponseEntity<String> signUp(@RequestBody CreateUserRequest createUserRequest) {
         userService.signUp(createUserRequest);
         return ResponseEntity.status(201).body("CREATED");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Jwt> login(@RequestBody LoginUserRequest loginUserRequest) throws JsonProcessingException {
+        Jwt jwt = userService.login(loginUserRequest);
+        if (jwt == null) {
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        return ResponseEntity.ok(jwt);
     }
 }

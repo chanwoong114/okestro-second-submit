@@ -8,7 +8,7 @@ import com.okestro.secure.JwtProvider;
 import com.okestro.secure.dto.AuthenticationUser;
 import com.okestro.secure.dto.LoginUserRequest;
 import com.okestro.secure.dto.VerifyUser;
-import com.okestro.secure.filter.VerifyUserFilter;
+import com.okestro.secure.filter.JwtAuthorizationFilter;
 import com.okestro.user.dto.CreateUserDto;
 import com.okestro.user.dto.CreateUserRequest;
 import com.okestro.user.dto.UpdateRefreshTokenDTO;
@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -28,10 +29,27 @@ public class UserService {
     private final BcryptConfig bcryptConfig;
     private final JwtProvider jwtProvider;
     private final ObjectMapper objectMapper;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     public Integer getUserIdByEmail(String email) {
         return userRepository.findUserIdByEmail(email);
     }
+
+    public Jwt login(LoginUserRequest loginUserRequest) throws JsonProcessingException {
+        VerifyUser verifyUser = verifyUser(loginUserRequest);
+        if (verifyUser.isValid()) {
+            AuthenticationUser authenticationUser = new AuthenticationUser(loginUserRequest.getEmail(), verifyUser.getUserId());
+            Map<String, Object> claims = new HashMap<>();
+            String authenticationUserJson = objectMapper.writeValueAsString(authenticationUser);
+            claims.put(jwtAuthorizationFilter.AUTHENTICATE_USER, authenticationUserJson);
+            Jwt jwt = jwtProvider.createJwt(claims);
+            updateRefreshToken(authenticationUser.getEmail(), jwt.getRefreshToken());
+            return jwt;
+        } else {
+            return null;
+        }
+    }
+
 
     public VerifyUser verifyUser(LoginUserRequest loginUserRequest) {
         String password = userRepository.findPasswdByEmail(loginUserRequest.getEmail());
@@ -74,7 +92,7 @@ public class UserService {
             HashMap<String, Object> claims = new HashMap<>();
             AuthenticationUser authenticationUser = userRepository.findAuthUserByRefreshToken(refreshToken);
             String authenticationUserJson = objectMapper.writeValueAsString(authenticationUser);
-            claims.put(VerifyUserFilter.AUTHENTICATE_USER, authenticationUserJson);
+            claims.put(jwtAuthorizationFilter.AUTHENTICATE_USER, authenticationUserJson);
             Jwt jwt = jwtProvider.createJwt(claims);
             updateRefreshToken(authenticationUser.getEmail(),jwt.getRefreshToken());
             return jwt;

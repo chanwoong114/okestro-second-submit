@@ -2,8 +2,9 @@ import React from 'react';
 
 function Main() {
   return (
-    <div className="login">
-    </div>
+      <div className="main">
+        <h1>메인 페이지</h1>
+      </div>
   );
 }
 
