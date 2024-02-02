@@ -1,9 +1,6 @@
 package com.okestro.board.controller;
 
-import com.okestro.board.dto.BoardIdRequest;
-import com.okestro.board.dto.BoardResponse;
-import com.okestro.board.dto.CreateBoardRequest;
-import com.okestro.board.dto.UpdateBoardRequest;
+import com.okestro.board.dto.*;
 import com.okestro.board.service.BoardService;
 import com.okestro.secure.dto.AuthenticationUser;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletRequest;
+import java.awt.print.Pageable;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -47,8 +46,19 @@ public class BoardController {
         return ResponseEntity.status(204).body("NO CONTENT");
     }
 
-    @GetMapping ("/detail")
+    @GetMapping ("/get/detail")
     public ResponseEntity<BoardResponse> detailBoard(@RequestParam Long boardId) {
         return ResponseEntity.ok(boardService.getBoardDetail(boardId));
+    }
+
+    @GetMapping("/get/total")
+    public ResponseEntity<List<BoardListResponse>> allBoard(@RequestParam Integer page) {
+        System.out.println("ㄷ르어옴");
+        return ResponseEntity.ok(boardService.boardList(page));
+    }
+
+    @GetMapping("/get/total-page")
+    public ResponseEntity<Integer> totalPage() {
+        return ResponseEntity.ok(boardService.totalBoardPage());
     }
 }

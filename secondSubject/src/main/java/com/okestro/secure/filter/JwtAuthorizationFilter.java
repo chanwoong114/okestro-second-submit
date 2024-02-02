@@ -26,7 +26,9 @@ import java.io.IOException;
 @Component
 public class JwtAuthorizationFilter implements Filter {
 
-    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**", "/swagger*", "/api/user/sign-up", "/api/auth/**"};
+    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**",
+            "/swagger*", "/api/user/sign-up", "/api/auth/**",
+    "/api/board/get/**"};
     private final JwtProvider jwtProvider;
     private final ObjectMapper objectMapper;
     public static final String AUTHENTICATE_USER = "jwt-secret";

@@ -5,64 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4904678a-29f9-4406-9ad5-bc17e743e4de" name="Changes" comment="변경 사항 커밋ㄷ">
-      <change afterPath="$PROJECT_DIR$/../front.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/api/Dto/userDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/api/axios.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/api/signup.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/api/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/component/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/component/input/input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/pagess/board/Board.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/Main.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/SignUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/route/routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/Login.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/Main.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pagess/SignUp.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/config/WebConfig.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/api/Dto/boardDto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/api/axiosInstance.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/api/board.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BaordCreateModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/axios.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/signup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/board/Board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pagess/board/Board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/user/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pagess/user/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/repository/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/service/BoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/JwtAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/VerifyUserFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/resources/mapper/board.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/resources/mapper/board.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

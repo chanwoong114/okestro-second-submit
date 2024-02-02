@@ -3,8 +3,7 @@ import { useState } from "react";
 
 import Input from "../../component/input/input";
 
-import useSignUp from "../../api/signup";
-import signup from "../../api/signup";
+import useSignUp from "../../api/user";
 
 function SignUp() {
   const { signUp } = useSignUp();
