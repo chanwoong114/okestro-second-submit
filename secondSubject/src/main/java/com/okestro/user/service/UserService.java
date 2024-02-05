@@ -104,4 +104,8 @@ public class UserService {
     public boolean checkEmail(String email) {
         return userRepository.findUserIdByEmail(email) != null;
     }
+
+    public boolean checkNickname(String nickname) {
+        return userRepository.findUserIdByEmail(nickname) != null;
+    }
 }

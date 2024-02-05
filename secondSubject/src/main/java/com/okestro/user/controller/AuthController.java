@@ -32,4 +32,12 @@ public class AuthController {
         }
         return ResponseEntity.ok(true);
     }
+
+    @GetMapping("/nickname-check")
+    public ResponseEntity<Boolean> checkNickname(@RequestParam String nickname) {
+        if (userService.checkNickname(nickname)) {
+            return ResponseEntity.ok(false);
+        }
+        return ResponseEntity.ok(true);
+    }
 }

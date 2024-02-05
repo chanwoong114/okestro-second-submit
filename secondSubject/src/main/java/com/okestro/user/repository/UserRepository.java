@@ -10,6 +10,8 @@ public interface UserRepository {
 
     Integer findUserIdByEmail(String email);
 
+    Integer findUserIdByNickname(String nickname);
+
     String findPasswdByEmail(String email);
 
     void signUp(CreateUserDto createUserDto);

@@ -6,6 +6,10 @@
         select user_id from user where email=#{email}
     </select>
 
+    <select id="findUserIdByNickname" parameterType="String" resultType="Integer">
+        select user_id from user where nickname=#{nickname}
+    </select>
+
     <select id="findPasswdByEmail" parameterType="String" resultType="String">
         select passwd from user where email=#{email}
     </select>

@@ -53,7 +53,6 @@ public class BoardController {
 
     @GetMapping("/get/total")
     public ResponseEntity<List<BoardListResponse>> allBoard(@RequestParam Integer page) {
-        System.out.println("ㄷ르어옴");
         return ResponseEntity.ok(boardService.boardList(page));
     }
 
