@@ -6,8 +6,16 @@
         select user_id from user where email=#{email}
     </select>
 
+    <select id="findUserIdByNickname" parameterType="String" resultType="Integer">
+        select user_id from user where nickname=#{nickname}
+    </select>
+
     <select id="findPasswdByEmail" parameterType="String" resultType="String">
         select passwd from user where email=#{email}
+    </select>
+
+    <select id="findAuthUserByRefreshToken" parameterType="String" resultType="AuthenticationUser">
+        select user_id, email from user where refresh_token=#{refreshToken}
     </select>
 
     <insert id="signUp" parameterType="CreateUserDto">

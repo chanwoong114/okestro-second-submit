@@ -10,13 +10,12 @@ import java.util.List;
 @Mapper
 public interface BoardRepository {
 
-
     void createBoard(Board board);
     void updateBoard(BoardResponse boardResponse);
     BoardResponse findBoardById(Long boardId);
     Integer findUserIdById(Long boardId);
-
-    List<BoardListResponse> findBoardList();
+    List<BoardListResponse> findBoardList(Integer page);
+    Integer findBoardCount();
     List<BoardListResponse> findBoardListByUserId(Integer userId);
     void deleteBoard(Long boardId);
 }

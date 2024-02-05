@@ -3,15 +3,13 @@
 
 <mapper namespace="com.okestro.board.repository.BoardRepository">
     <select id="findBoardById" parameterType="Long" resultType="BoardResponse">
-        select board_id, user_id, title, content, created_at, updated_at
+        select board.board_id, board.user_id, user.nickname, board.title, board.content, board.created_at, board.updated_at
         from board
+        join user on board.user_id = user.user_id
         where board_id=#{boardId}
     </select>
-    
-    <select id="findBoardList" resultType="BoardListResponse">
-        select board_id, title, updated_at
-        from board
-    </select>
+
+
     
     <select id="findUserIdById" parameterType="Long" resultType="Integer">
         select user_id
@@ -20,9 +18,22 @@
     </select>
     
     <select id="findBoardListByUserId" parameterType="Integer" resultType="BoardListResponse">
-        select board_id, title, updated_at
-        from board
+        select B.board_id, B.title, B.updated_at, U.nickname
+        from board B
+        join user U on board.user_id = user.user_id
         where user_id=#{userId}
+        order by created_at desc
+    </select>
+
+    <select id="findBoardCount" resultType="Integer">
+        select COUNT(*) from board
+    </select>
+
+    <select id="findBoardList" parameterType="Integer" resultType="BoardListResponse">
+        select board.board_id, board.title, board.updated_at, user.nickname
+        from board join user on board.user_id = user.user_id
+        order by created_at desc
+        LIMIT 10 offset #{page}
     </select>
     
     <insert id="createBoard" parameterType="Board">

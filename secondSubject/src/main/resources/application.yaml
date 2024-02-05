@@ -9,8 +9,15 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+
 mybatis:
   mapper-locations: mapper/*.xml
   type-aliases-package: "com.okestro"
   configuration:
     map-underscore-to-camel-case: true
+
+server:
+  servlet:
+    header:
+      Referrer-Policy: strict-origin-when-cross-origin
+

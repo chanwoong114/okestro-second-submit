@@ -1,15 +1,13 @@
 package com.okestro.board.service;
 
-import com.okestro.board.dto.Board;
-import com.okestro.board.dto.BoardResponse;
-import com.okestro.board.dto.CreateBoardRequest;
-import com.okestro.board.dto.UpdateBoardRequest;
+import com.okestro.board.dto.*;
 import com.okestro.board.repository.BoardRepository;
 import com.okestro.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -73,4 +71,12 @@ public class BoardService {
         }
     }
 
+    public Integer totalBoardPage() {
+        return boardRepository.findBoardCount();
+    }
+
+    public List<BoardListResponse> boardList(Integer page) {
+        Integer pages = (page - 1) * 10;
+        return boardRepository.findBoardList(pages);
+    }
 }

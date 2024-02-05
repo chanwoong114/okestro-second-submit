@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.okestro.secure.JwtProvider;
 import com.okestro.secure.dto.AuthenticationUser;
+import com.okestro.user.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -12,6 +13,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.util.PatternMatchUtils;
 
 import javax.servlet.*;
@@ -21,16 +23,21 @@ import java.io.IOException;
 
 @Slf4j
 @RequiredArgsConstructor
+@Component
 public class JwtAuthorizationFilter implements Filter {
 
-    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**", "/swagger*", "/api/user/sign-up"};
+    private final String[] whiteList = new String[]{"/api/user/login", "/v3/**",
+            "/swagger*", "/api/user/sign-up", "/api/auth/**",
+    "/api/board/get/**"};
     private final JwtProvider jwtProvider;
     private final ObjectMapper objectMapper;
+    public static final String AUTHENTICATE_USER = "jwt-secret";
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
         if(whiteListCheck(httpServletRequest.getRequestURI())){
             chain.doFilter(request, response);
             return;
@@ -74,7 +81,7 @@ public class JwtAuthorizationFilter implements Filter {
 
     private AuthenticationUser getAuthenticationUser(String token) throws JsonProcessingException {
         Claims claims = jwtProvider.getClaims(token);
-        String authenticateUserJson = claims.get(VerifyUserFilter.AUTHENTICATE_USER, String.class);
+        String authenticateUserJson = claims.get(AUTHENTICATE_USER, String.class);
         return objectMapper.readValue(authenticateUserJson, AuthenticationUser.class);
     }
 }
