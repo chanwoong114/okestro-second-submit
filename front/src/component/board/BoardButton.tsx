@@ -17,7 +17,7 @@ const BoardButton: React.FC = () => {
         type="primary"
 
         style={{ right: 40 }}
-        icon={<PlusOutlined />}
+        icon={<PlusOutlined/>}
       >
         <FloatButton icon={<EditOutlined />} tooltip={<div>작성하기</div>}/>
         <FloatButton icon={<TeamOutlined />} tooltip={<div>작성한 글 보기</div>}/>

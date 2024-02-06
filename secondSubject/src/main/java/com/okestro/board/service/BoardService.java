@@ -79,4 +79,8 @@ public class BoardService {
         Integer pages = (page - 1) * 10;
         return boardRepository.findBoardList(pages);
     }
+
+    public Boolean isMine(Long boardId, Integer userId) {
+        return Objects.equals(boardRepository.findBoardById(boardId).getUserId(), userId);
+    }
 }

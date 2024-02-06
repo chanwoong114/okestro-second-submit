@@ -1,0 +1,51 @@
+.nav-div {
+    background-color: #FFFFFF;
+    height: 8vh;
+    border-bottom: 3px solid #000080;
+}
+
+
+.right-div {
+    text-align: center;
+    width: 15%;
+    display: flex;
+    font-weight: bold;
+}
+
+
+.Link {
+    padding-top: 2vh;
+    width: 50%;
+    height: 6vh;
+    text-decoration: none; /* 하이퍼링크의 밑줄 제거 */
+    color: inherit; /* 기본 텍스트 색상으로 설정 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+}
+
+.Link-left {
+    /*margin-right: 10%;*/
+}
+
+.right-div-p {
+    padding-top: 2vh;
+    width: 50%;
+    height: 6vh;
+    margin-left: auto;
+}
+
+.Link:hover {
+    border-bottom: 3px solid navy;
+    color: #000080;
+    transition: border-bottom .1s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s
+}
+
+.right-div-p:hover {
+    border-bottom: 3px solid navy;
+    color: #000080;
+    transition: border-bottom .1s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s
+}
+
+.wall {
+    visibility: hidden;
+    width: 10px;
+}

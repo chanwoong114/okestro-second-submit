@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import useBoard from "../../api/board";
 import {BoardListDto} from "../../api/Dto/boardDto";
-import BoardList from "../../component/board/BoardList";
 import {useNavigate} from "react-router-dom";
 
 import { Pagination } from 'antd';
-import BoardButton from "../../component/board/BoardButton";
-import BoardCreateModal from "../../component/board/BaordCreateModal";
+import BoardCreateModal from "../../component/board/BoardCreateModal";
+import BoardTable from "../../component/board/BoardTable";
+import './Board.css'
 
 function Board() {
   const navigate = useNavigate();
@@ -15,7 +15,10 @@ function Board() {
   const { allBoard, totalPage } = useBoard();
   const [boardList, setBoardList] = useState<BoardListDto[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const col = [10, 35, 15, 20, 20];
+  const headerContent = ['ID', '제목', '작성자', '작성일자', '수정일자'];
+
+
 
   const updateBoardList = async () => {
     setBoardList(await allBoard(page));
@@ -26,6 +29,16 @@ function Board() {
     updateBoardList().then(r => null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+  let bodyContent =
+    boardList?.map((list) => ({
+      ID: list.boardId,
+      제목: list.title,
+      작성자: list.nickname,
+      작성일자: list.createdAt,
+      수정일자: list.updatedAt,
+    })) || [];
+
 
   const changePage = () => {
     const newArr = []
@@ -38,23 +51,26 @@ function Board() {
     return newArr;
   }
 
-  const changeModalOpen = () => {
-    setModalOpen(!modalOpen)
-  }
+  const onGoDetailHandler = (boardId: string) => {
+    navigate(`/${boardId}`)
+  };
 
 
   return (
     <div className="container">
-      <h1 className="text-danger">board 페이지</h1>
-      {boardList?.map((board) => (
-        <div key={board.boardId} onClick={() => navigate(`/board/${board.boardId}`)}>
-          <BoardList boardId={board.boardId} nickname={board.nickname} title={board.title} updatedAt={board.updatedAt} />
+      <div className={'flex-div'}>
+        <div className={'flex-h2'}>
+          <h2 className={'h2-style'}>Post</h2>
         </div>
-      ))}
-      {changePage()}
-
-      <BoardButton />
-      <BoardCreateModal />
+        <div className={'flex-button'}>
+          <br/> <br/>
+          <BoardCreateModal/>
+        </div>
+      </div>
+      <BoardTable col={col} headerContent={headerContent} bodyContent={bodyContent} onGoDetail={onGoDetailHandler} />
+      <div style={{textAlign: 'center'}}>
+        {changePage()}
+      </div>
     </div>
   );
 }

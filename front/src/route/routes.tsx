@@ -1,34 +1,35 @@
 import React from 'react';
-import Main from "../pagess/user/Main";
-import Login from "../pagess/user/Login";
-import SignUp from "../pagess/user/SignUp";
+import Login from "../pagess/user/login/Login";
+import SignUp from "../pagess/user/signUp/SignUp";
 import Board from "../pagess/board/Board";
 import BoardDetail from "../pagess/board/BoardDetail";
 
 interface route {
+  isNav: boolean,
   path: string,
   element: React.ReactElement;
 }
 
 const routes: route[] = [
+
   {
-    path: "/",
-    element: <Main />
-  },
-  {
+    isNav: false,
     path: "/login",
     element: <Login />
   },
   {
+    isNav: false,
     path: "/sign-up",
     element: <SignUp />
   },
   {
-    path: "/board",
+    isNav: true,
+    path: "/",
     element: <Board />
   },
   {
-    path: "/board/:id",
+    isNav: true,
+    path: "/:id",
     element: <BoardDetail />
   },
 ]

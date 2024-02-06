@@ -1,0 +1,56 @@
+.input1 {
+    border-radius: .5rem;
+    height: 44px;
+    width: 600px;
+    background-color: #05060f0a;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label1 {
+    display: block;
+    margin-bottom: .6rem;
+    margin-top: 1rem;
+    font-size: .9rem;
+    font-weight: bold;
+    color: #05060f99;
+    transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input1:hover, .input1:focus, .input-group:hover .input1 {
+    outline: none;
+    border-color: #00008050;
+    color: #000000;
+}
+
+.input-group:hover .label1, .input1:focus {
+    color: #000000c2;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.absolute-span {
+    position: absolute;
+    top: 55px;
+    margin-right: 8px;
+    padding: 2px 5px 2px 5px ;
+    right: 0;
+    background-color: #000080;
+    border: #000080 1px solid ;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: .9rem;
+}
+
+.absolute-span:hover {
+    background-color: #FFFFFF;
+    color: navy;
+    border: #000080 1px solid ;
+    transition: background-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s, border .3s cubic-bezier(.25,.01,.25,1) 0s
+}

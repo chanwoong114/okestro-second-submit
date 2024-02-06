@@ -2,15 +2,21 @@ import axios from "axios";
 import axiosInstance from "./axiosInstance";
 import {BoardIdDto, BASE_URL, BoardListDto, BoardResponseDto, UpdateBoardDto, CreateBoardDtd} from "./Dto/boardDto";
 import {useNavigate} from "react-router-dom";
+import Cookies from "js-cookie";
+import useLogin from "./user";
 
 const useBoard = () => {
+  const {refreshToken} = useLogin();
   const navigate = useNavigate();
-  const createBoard = async ({content, title}: CreateBoardDtd) => {
+
+
+  const createBoard = async ({title, content}: CreateBoardDtd) => {
     try {
       const response = await axiosInstance({
         method: 'POST',
         url: BASE_URL + '/create',
-        data: {content, title}
+        data: {title, content},
+
       })
       return response.data
     } catch (error) {
@@ -20,12 +26,12 @@ const useBoard = () => {
   }
 
 
-  const updateBoard = async ({boardId, content, title}: UpdateBoardDto) => {
+  const updateBoard = async ({boardId, title, content}: UpdateBoardDto) => {
     try {
       const response = await axiosInstance({
         method: 'POST',
         url: BASE_URL + '/update',
-        data: {boardId, content, title}
+        data: {boardId, title, content}
       })
       return response.data
     } catch (error) {
@@ -95,7 +101,23 @@ const useBoard = () => {
     }
   }
 
-  return {createBoard, updateBoard, deleteBoard, allBoard, detailBoard, totalPage}
+  const checkMine = async (boardId: number)=> {
+    try {
+      const response = await axiosInstance({
+        method: 'GET',
+        url: BASE_URL + '/check-mine',
+        params: {boardId}
+      })
+      return response.data
+    } catch (error) {
+      console.error(error);
+      throw error
+    }
+  }
+
+
+
+  return {createBoard, updateBoard, deleteBoard, allBoard, detailBoard, totalPage, checkMine}
 }
 
 export default useBoard;

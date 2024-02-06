@@ -27,7 +27,7 @@ interface ButtonProps {
 
 function Input({ label, isPassword, inputWord, placeholder, onChange, checkButton }: InputProps) {
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     onChange(newValue); // 입력 값 변경 시 부모 컴포넌트로 전달
   };
@@ -38,12 +38,12 @@ function Input({ label, isPassword, inputWord, placeholder, onChange, checkButto
     <div className={'input-group'}>
       <label className={'label1'}>{label}</label>
       <div>
-        <input
+        <textarea
           className={'input1'}
-          type={isPassword? 'password' : 'text'} // 비밀번호 표시 조건 추가
           value={inputWord}
           placeholder={placeholder}
           onChange={handleInputChange}
+          style={{height: '200px', paddingTop: '7px', width: '100%'}}
         />
       </div>
       {checkButton?.isButton && (

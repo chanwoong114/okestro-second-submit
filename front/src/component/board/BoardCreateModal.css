@@ -1,0 +1,11 @@
+.modal-button {
+    background-color: navy;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.modal-button:hover {
+    background-color: #FFFFFF;
+    color: #000080;
+    border: 1px solid navy;
+}

@@ -11,6 +11,7 @@ public class BoardListResponse {
 
     private Long boardId;
     private String title;
+    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String nickname;
 }
