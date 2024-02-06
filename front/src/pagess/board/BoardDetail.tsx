@@ -19,7 +19,8 @@ function BoardDetail() {
   const getBoardInfo = async () => {
     console.log(boardId)
     setBoardInfo(await detailBoard(boardId))
-    if (!isLogin) {
+
+    if (isLogin && !isMine) {
       setIsMine(await checkMine(boardId))
     }
   }
@@ -35,8 +36,11 @@ function BoardDetail() {
 
   useEffect(() => {
     getBoardInfo().then(() => null);
+    if (!isLogin) {
+      setIsMine(false);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLogin]);
 
 
   return (
@@ -56,17 +60,19 @@ function BoardDetail() {
                     </div>
                 </div>
                 <hr/>
-                <p>{boardInfo?.content}</p>
+                <p className={'div-p'}>{boardInfo?.content}</p>
+                {isMine &&
+                  <div style={{display: 'flex'}}>
+                    <div className={'hidden-div'}>
+                      <div className={'absolute-div'}>
+                        <BoardCreateModal titleProps={boardInfo?.title} contentProps={boardInfo?.content} boardId={boardId} />
+                        <Button style={{marginLeft: '20px'}} type={'primary'} danger onClick={deleteHandler}>삭제</Button>
+                      </div>
+                    </div>
+                  </div>
+                }
             </div>
         }
-      </div>
-      <div style={isMine? {display: 'flex'} : {display: 'None'}}>
-        <div className={'hidden-div'}>
-          <div className={'absolute-div'}>
-            <BoardCreateModal titleProps={boardInfo?.title} contentProps={boardInfo?.content} boardId={boardId} />
-            <Button style={{marginLeft: '20px'}} type={'primary'} danger onClick={deleteHandler}>삭제</Button>
-          </div>
-        </div>
       </div>
     </div>
   );

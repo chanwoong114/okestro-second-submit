@@ -41,11 +41,12 @@
 
 .hidden-div {
     margin-left: auto;
-    margin-right: 100px;
+}
+
+.div-p {
+    height: 30vh;
 }
 
 .absolute-div {
-    position: absolute;
     top: 63vh;
-    right: 15vh;
 }

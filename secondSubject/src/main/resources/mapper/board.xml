@@ -22,7 +22,7 @@
         from board B
         join user U on board.user_id = user.user_id
         where user_id=#{userId}
-        order by created_at desc
+        order by board_id desc
     </select>
 
     <select id="findBoardCount" resultType="Integer">
@@ -32,7 +32,7 @@
     <select id="findBoardList" parameterType="Integer" resultType="BoardListResponse">
         select board.board_id, board.title, board.created_at, board.updated_at, user.nickname
         from board join user on board.user_id = user.user_id
-        order by created_at desc
+        order by board_id desc
         LIMIT 10 offset #{page}
     </select>
     
