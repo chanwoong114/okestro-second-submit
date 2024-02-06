@@ -18,7 +18,7 @@
     </select>
     
     <select id="findBoardListByUserId" parameterType="Integer" resultType="BoardListResponse">
-        select B.board_id, B.title, B.updated_at, U.nickname
+        select B.board_id, B.title, B.created_at, B.updated_at, U.nickname
         from board B
         join user U on board.user_id = user.user_id
         where user_id=#{userId}
@@ -30,7 +30,7 @@
     </select>
 
     <select id="findBoardList" parameterType="Integer" resultType="BoardListResponse">
-        select board.board_id, board.title, board.updated_at, user.nickname
+        select board.board_id, board.title, board.created_at, board.updated_at, user.nickname
         from board join user on board.user_id = user.user_id
         order by created_at desc
         LIMIT 10 offset #{page}

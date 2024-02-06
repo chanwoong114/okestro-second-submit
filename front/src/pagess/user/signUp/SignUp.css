@@ -1,0 +1,36 @@
+.sign-up-form {
+    text-align: left;
+    width: 700px;
+    height: 660px;
+    border-radius: 20px; /* 둥근 모서리를 위한 속성 */
+    background-color: #ffffff; /* 박스 배경색 */
+    box-shadow: 0px 0px 8px rgba(0, 0, 80, 0.3); /* 그림자 설정 */
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+.sign-up-input-form {
+    height: 500px;
+}
+
+.check-p {
+    position: absolute;
+    font-size: .7rem;
+    color: green;
+}
+
+.hidden-p {
+    display: none;
+}
+
+.un-check-p {
+    position: absolute;
+    font-size: .7rem;
+    color: red;
+}
+
+.flex-box {
+    display: flex;
+}

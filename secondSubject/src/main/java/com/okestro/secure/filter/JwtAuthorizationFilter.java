@@ -20,6 +20,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,6 +38,11 @@ public class JwtAuthorizationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+        if (Objects.equals(httpServletRequest.getMethod(), "OPTIONS")) {
+           chain.doFilter(request, response);
+           return;
+        }
 
         if(whiteListCheck(httpServletRequest.getRequestURI())){
             chain.doFilter(request, response);

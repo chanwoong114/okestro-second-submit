@@ -1,8 +1,8 @@
 export const BASE_URL = 'http://localhost:8080/api/board'
 
 export interface CreateBoardDtd {
-  content: string,
   title: string
+  content: string,
 }
 
 export interface BoardIdDto {
@@ -11,8 +11,8 @@ export interface BoardIdDto {
 
 export interface UpdateBoardDto {
   boardId: number,
-  content: string,
   title: string
+  content: string,
 }
 
 export interface BoardResponseDto {
@@ -29,5 +29,6 @@ export interface BoardListDto {
   boardId: number,
   nickname: string,
   title: string,
-  updatedAt: Date
+  updatedAt: Date,
+  createdAt: Date
 }

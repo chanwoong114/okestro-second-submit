@@ -60,4 +60,11 @@ public class BoardController {
     public ResponseEntity<Integer> totalPage() {
         return ResponseEntity.ok(boardService.totalBoardPage());
     }
+
+    @GetMapping("/check-mine")
+    public ResponseEntity<Boolean> isMine(ServletRequest servletRequest,
+                                          @RequestParam Long boardId) {
+        AuthenticationUser authenticationUser = (AuthenticationUser) servletRequest.getAttribute("authenticateUser");
+        return ResponseEntity.ok(boardService.isMine(boardId, authenticationUser.getUserId()));
+    }
 }

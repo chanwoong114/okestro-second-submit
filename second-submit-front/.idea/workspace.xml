@@ -5,8 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4904678a-29f9-4406-9ad5-bc17e743e4de" name="Changes" comment="변경 사항 커밋ㄷ">
+      <change afterPath="$PROJECT_DIR$/../front/src/component/alert/Info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/alert/Info.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardCreateModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardCreateModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/board/BoardTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/input/InputText.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/component/input/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/etc/font/Pretendard-ExtraBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/etc/font/Pretendard-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/etc/font/Pretendard-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/etc/image/SYMBOL.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/etc/image/SYMBOL_WHITE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/output.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/board/Board.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/login/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/login/Login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/signUp/SignUp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/pagess/user/signUp/SignUp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/src/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/Dto/boardDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/api/Dto/boardDto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/Dto/userDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/api/Dto/userDto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/api/board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/component/board/BaordCreateModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/component/board/BoardButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/component/board/BoardButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/component/input/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/component/input/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/board/Board.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pagess/board/Board.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/pagess/board/BoardDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/user/Login.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/pagess/user/SignUp.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/route/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/route/routes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/dto/BoardListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/board/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/secure/filter/JwtAuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/java/com/okestro/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../secondSubject/src/main/resources/mapper/board.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../secondSubject/src/main/resources/mapper/board.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +73,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
   <component name="ProjectId" id="2biD183nlu0WJyUB1V4CeqGEDN4" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,7 +99,7 @@
     "nodejs_package_manager_path": "npm",
     "npm.npm start.executor": "Run",
     "settings.editor.selected.configurable": "editing.templates",
-    "ts.external.directory.path": "C:\\Users\\xodnd\\Desktop\\okestro-second-submit\\second-submit-front\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/lee-chanwoong/Desktop/okestro-second-submit/second-submit-front/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

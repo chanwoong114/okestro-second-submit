@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -35,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: "Pretendard-medium";
+  src: url("./etc/font/Pretendard-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Pretendard-extrabold";
+  src: url("./etc/font/Pretendard-ExtraBold.ttf");
 }
