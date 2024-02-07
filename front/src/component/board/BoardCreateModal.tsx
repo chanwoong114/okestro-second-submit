@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { Button, Modal } from 'antd';
 import './BoardCreateModal.css'
 import useBoard from "../../api/board";
 import Input from "../input/input";
 import InputText from "../input/InputText";
 import {UpdateBoardDto} from "../../api/Dto/boardDto";
-import {useIsLogin} from "../../context";
+import {useIsLogin} from "../../context/context";
+import ConfirmContext from "../../context/confirm/ConfirmContext";
+import AlertContext from "../../context/alert/AlertContext";
+
 interface modalInput {
   titleProps?: string | undefined,
   contentProps?: string | undefined,
@@ -14,6 +17,8 @@ interface modalInput {
 
 
 function  BoardCreateModal ({titleProps, contentProps, boardId}: modalInput)  {
+  const {alert} = useContext(AlertContext);
+  const {confirm} = useContext(ConfirmContext);
   const { isLogin } = useIsLogin();
   const { createBoard, updateBoard } = useBoard();
   const [loading, setLoading] = useState(false);
@@ -22,19 +27,23 @@ function  BoardCreateModal ({titleProps, contentProps, boardId}: modalInput)  {
   const [title, setTitle] = useState<string>(titleProps? titleProps : '');
   const [content, setContent] = useState<string>(contentProps? contentProps : '');
 
-  const showModal = () => {
+  const showModal = async () => {
     if (isLogin) {
       setOpen(true);
     } else {
-      alert('로그인 해야 글을 작성하실 수 있습니다.');
+      await alert('로그인 해야 글을 작성하실 수 있습니다.', true);
     }
   };
 
   const handleOk = async () => {
     if (boardId) {
-      await updateBoard({boardId, title, content} as UpdateBoardDto)
+      const isConfirm = await confirm("글 수정을 완료 하시겠습니까?")
+      if (isConfirm) await updateBoard({boardId, title, content} as UpdateBoardDto)
+      else return;
     } else {
-      await createBoard({title, content})
+      const isConfirm = await confirm("글 작성을 완료 하시겠습니까?")
+      if (isConfirm) await createBoard({title, content})
+      else return;
     }
     setOpen(false);
     window.location.reload();
@@ -63,6 +72,7 @@ function  BoardCreateModal ({titleProps, contentProps, boardId}: modalInput)  {
           </Button>,
         ]}
         width={1000}
+        zIndex={50}
       >
         <form onSubmit={handleOk}>
           <Input label={'Title'} isPassword={false} onChange={setTitle} inputWord={title} placeholder={"이름를 입력하세요"}/>

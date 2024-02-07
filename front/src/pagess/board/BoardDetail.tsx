@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams, useNavigate } from "react-router-dom";
 import {BoardResponseDto} from "../../api/Dto/boardDto";
 import useBoard from "../../api/board";
 import './BoardDetail.css'
 import BoardCreateModal from "../../component/board/BoardCreateModal";
 import {Button} from "antd";
-import { useIsLogin } from "../../context";
-
+import { useIsLogin } from "../../context/context";
+import ConfirmContext from "../../context/confirm/ConfirmContext";
+import AlertContext from "../../context/alert/AlertContext";
 function BoardDetail() {
+  const {alert} = useContext(AlertContext);
+  const {confirm} = useContext(ConfirmContext);
   const {isLogin} = useIsLogin();
   const navigate = useNavigate();
   const { detailBoard, checkMine, deleteBoard } = useBoard();
@@ -26,10 +29,11 @@ function BoardDetail() {
   }
 
   const deleteHandler = async () => {
-    const isDelete = window.confirm('삭제 하시겠습니까?')
+    const isDelete = await confirm('삭제 하시겠습니까?')
     if (isDelete) {
       await deleteBoard({boardId})
       navigate('/')
+      await alert("게시글 삭제 완료")
       return;
     }
   }

@@ -84,4 +84,15 @@ public class BoardService {
         System.out.println(Objects.equals(boardRepository.findBoardById(boardId).getUserId(), userId));
         return Objects.equals(boardRepository.findBoardById(boardId).getUserId(), userId);
     }
+
+    public void testData() {
+        for (int i = 0; i < 100; i++) {
+            CreateBoardRequest createBoardRequest = CreateBoardRequest.builder()
+                    .title("title" + i)
+                    .content("물고기들이 바닷속을 헤엄치며 서로 놀아주는 모습이 참으로 아름답습니다. 푸른 바다 속에서는 수많은 생명들이 공존하며 서로에게 의지하고 있습니다. 작은 조개들이 모래 속에서 자신의 보금자리를 만들고, 컬러풀한 물고기들이 헤엄치며 바다의 심연을 탐험합니다. 이 모든 것들은 자연의 아름다움과 조화로움을 보여줍니다. 바닷속은 우리에게 끝없는 경이로움을 선사하며 우리를 놀라게 합니다. 생명력이 넘치고 아름다운 바닷속 세계는 우리가 지켜야 할 보물입니다.")
+                    .build();
+
+            createBoard(createBoardRequest, 1);
+        }
+    }
 }

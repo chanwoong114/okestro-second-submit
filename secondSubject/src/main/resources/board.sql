@@ -4,7 +4,7 @@ CREATE TABLE `user` (
                         `passwd`	varchar(64)	NOT NULL,
                         `name`	varchar(20)	NOT NULL,
                         `nickname`	varchar(20)	NOT NULL,
-                        'refresh_token' varchar(256)
+                        `refresh_token` varchar(256)
 );
 
 

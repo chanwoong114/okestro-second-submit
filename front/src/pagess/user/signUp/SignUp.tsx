@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -8,6 +8,7 @@ import useSignUp from "../../../api/user";
 import './SignUp.css'
 import '../login/Login.css'
 import symbol from "../../../etc/image/SYMBOL.png";
+import AlertContext from "../../../context/alert/AlertContext";
 
 interface checkState {
   prev: string
@@ -15,6 +16,7 @@ interface checkState {
 }
 
 function SignUp() {
+  const {alert} = useContext(AlertContext);
   const navigate = useNavigate();
   const { signUp, checkEmail, checkNickname } = useSignUp();
   const [email, setEmail] = useState<string>('');
@@ -34,31 +36,31 @@ function SignUp() {
 
     event.preventDefault();
     if (!email) {
-      alert("이메일을 입력해주세요");
+      await alert("이메일을 입력해주세요", true);
       return;
     }
     else if (emailState !== 1) {
-      alert("이메일 중복 확인을 해주세요");
+      await alert("이메일 중복 확인을 해주세요", true);
       return;
     }
     else if (!passwd) {
-      alert("패스워드를 입력해주세요");
+      await alert("패스워드를 입력해주세요", true);
       return;
     }
     else if (passwd !== passwdCheck) {
-      alert("비밀번호가 같지 않습니다.");
+      await alert("비밀번호가 같지 않습니다.", true);
       return;
     }
     else if (!name) {
-      alert('이름을 입력해주세요');
+      await alert('이름을 입력해주세요', true);
       return;
     }
     else if (!nickname) {
-      alert('닉네임을 입력해주세요');
+      await alert('닉네임을 입력해주세요', true);
       return;
     }
     else if (nicknameState !== 1) {
-      alert('닉네임 중복 확인을 해주세요');
+      await alert('닉네임 중복 확인을 해주세요', true);
       return;
     }
 
@@ -67,7 +69,12 @@ function SignUp() {
 
   const setEmailHandler = (emailHandle: string) => {
     setEmail(emailHandle)
+    if (emailHandle && !emailHandle.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      setEmailState(3);
+      return
+    }
     if (!prevEmail.prev) {
+      setEmailState(0)
       return;
     }
     if (prevEmail.prev !== emailHandle) {
@@ -82,7 +89,11 @@ function SignUp() {
   const checkEmailHandle: React.MouseEventHandler = async () => {
     if (!email) {
       setEmailState(0)
-      alert("이메일을 입력하세요")
+      await alert("이메일을 입력하세요", true)
+      return;
+    }
+    if (emailState === 3) {
+      await alert("이메일 형식으로 입력하세요", true)
       return;
     }
     const response = await checkEmail({email});
@@ -125,7 +136,7 @@ function SignUp() {
   const checkNicknameHandle: React.MouseEventHandler = async () => {
     if (!nickname) {
       setNicknameState(0)
-      alert("닉네임을 입력하세요")
+      await alert("닉네임을 입력하세요", true)
       return;
     }
     const response = await checkNickname({nickname});
@@ -145,9 +156,10 @@ function SignUp() {
       <form className={'sign-up-form'} onSubmit={handleSignUp}>
         <div className={'sign-up-input-form'}>
           <Input label={'Email Address'} isPassword={false} onChange={setEmailHandler} inputWord={email}
-                 placeholder={"아이디를 입력하세요"} checkButton={{isButton:'이메일', handleFunc:checkEmailHandle}}/>
+                 placeholder={"이메일을 입력하세요"} checkButton={{isButton:'이메일', handleFunc:checkEmailHandle}}/>
           <p className={emailState === 1 ? 'check-p' : 'hidden-p'}>사용 가능한 이메일입니다.</p>
           <p className={emailState === 2 ? 'un-check-p' : 'hidden-p'}>이미 사용중인 이메일입니다.</p>
+          <p className={emailState === 3 ? 'un-check-p' : 'hidden-p'}>아매일 형식이 맞지 않습니다.</p>
 
           <Input label={'Password'} isPassword={true} onChange={setPasswd} inputWord={passwd}
                  placeholder={"비밀번호를 입력하세요"}/>

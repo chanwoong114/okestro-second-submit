@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -8,8 +8,10 @@ import useLogin from "../../../api/user";
 
 import symbol from "../../../etc/image/SYMBOL.png"
 import "./Login.css"
+import AlertContext from "../../../context/alert/AlertContext";
 
 function Login() {
+  const {alert} = useContext(AlertContext);
   const navigate = useNavigate();
   const { login } = useLogin();
   const [email, setEmail] = useState<string>('');
@@ -18,11 +20,11 @@ function Login() {
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!email) {
-      alert("이메일을 입력해주세요")
+      await alert("이메일을 입력해주세요", true)
       return;
     }
     else if (!passwd) {
-      alert("패스워드를 입력해주세요")
+      await alert("패스워드를 입력해주세요", true)
       return;
     }
 
@@ -35,7 +37,7 @@ function Login() {
       <img className={'logo-img'} src={symbol} width={'600px'} onClick={() => navigate(`/`)} />
       <form className={'login-form'}  onSubmit={handleLogin}>
         <div className={'input-form'}>
-          <Input label={'Email Address'} isPassword={false} onChange={setEmail} inputWord={email} placeholder={"아이디를 입력하세요"} />
+          <Input label={'Email Address'} isPassword={false} onChange={setEmail} inputWord={email} placeholder={"이메일을 입력하세요"} />
           <Input label={'Password'} isPassword={true} onChange={setPasswd} inputWord={passwd} placeholder={"비밀번호를 입력하세요"} />
         </div>
         <div className={'button-form'}>

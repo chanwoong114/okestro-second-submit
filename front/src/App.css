@@ -46,3 +46,149 @@
   font-family: "Pretendard-extrabold";
   src: url("./etc/font/Pretendard-ExtraBold.ttf");
 }
+
+.dialog-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+  z-index: 100;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+
+  .dialog {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: slideInFromTop .8s forwards;
+
+    .title {
+      margin: 0 0 20px 0;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      font-size: 1em;
+      font-family: inherit;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      float: right;
+    }
+
+    .buttons button {
+      color: #FFFFFF;
+      border-radius: 6px;
+      text-transform: uppercase;
+      border: none;
+      transition: all 0.2s;
+      font-size: 13px;
+      margin: 0 5px;
+      padding: 6px 18px;
+    }
+
+    .buttons button:hover {
+      color: white;
+    }
+
+    .cancel {
+      border: 3px solid rgb(0, 0, 80);
+      background-color: rgb(0, 0, 80);
+    }
+
+    .cancel:hover {
+      background-color: #00008099;
+      transition: all 0.5s;
+    }
+
+    .ok {
+      border: 3px solid rgb(255, 65, 65);
+      background-color: rgb(255, 65, 65);
+    }
+
+    .ok:hover {
+      background-color: #FF414199;
+      transition: all 0.5s;
+    }
+
+  }
+
+}
+
+
+.dialog-container-alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25vw;
+  overflow: hidden;
+  height: 10vh;
+  z-index: 100;
+  transform: translate(150%, 0);
+
+
+
+  .dialog-alert {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px;
+    padding: 20px;
+    animation: slideInFromTop-alert 3s forwards;
+
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -100%, 0);
+    }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0) translate(-50%, 10%);
+  }
+
+}
+
+@keyframes slideInFromTop-alert {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -100%, 0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateZ(0) translate(-50%, 10%);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateZ(0) translate(-50%, 10%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -110%, 0);
+  }
+}

@@ -4,6 +4,7 @@ import com.okestro.board.dto.*;
 import com.okestro.board.service.BoardService;
 import com.okestro.secure.dto.AuthenticationUser;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,5 +67,11 @@ public class BoardController {
                                           @RequestParam Long boardId) {
         AuthenticationUser authenticationUser = (AuthenticationUser) servletRequest.getAttribute("authenticateUser");
         return ResponseEntity.ok(boardService.isMine(boardId, authenticationUser.getUserId()));
+    }
+
+    @GetMapping("/get/test")
+    public ResponseEntity<Null> testData() {
+        boardService.testData();
+        return ResponseEntity.ok(null);
     }
 }

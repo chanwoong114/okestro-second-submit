@@ -4,8 +4,12 @@ import {BoardIdDto, BASE_URL, BoardListDto, BoardResponseDto, UpdateBoardDto, Cr
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 import useLogin from "./user";
+import AlertContext from "../context/alert/AlertContext";
+import {useContext} from "react";
+
 
 const useBoard = () => {
+  const {alert} = useContext(AlertContext);
   const {refreshToken} = useLogin();
   const navigate = useNavigate();
 
@@ -64,13 +68,13 @@ const useBoard = () => {
       const boardResponse: BoardResponseDto = response.data
       console.log(response.data)
       if (boardResponse.boardId === undefined) {
-        alert("해당 게시글이 없습니다.")
-        navigate('/board');
+        navigate('/');
+        await alert("해당 게시글이 없습니다.", true)
       }
       return boardResponse
     } catch (error) {
       console.error(error);
-      navigate('/board');
+      navigate('/');
     }
   }
 

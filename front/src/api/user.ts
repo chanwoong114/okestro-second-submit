@@ -2,9 +2,12 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import {LoginDto, SignUpDto, emailDto, nicknameDto, BASE_URL_USER, BASE_URL_AUTH} from "./Dto/userDto";
 import {useNavigate} from "react-router-dom";
-import {useIsLogin} from "../context";
+import {useIsLogin} from "../context/context";
+import AlertContext from "../context/alert/AlertContext";
+import {useContext} from "react";
 
 const useLogin = () => {
+  const {alert} = useContext(AlertContext);
   const navigate = useNavigate();
   const {setIsLogin} = useIsLogin();
 
@@ -24,9 +27,10 @@ const useLogin = () => {
       Cookies.set('accessToken', response.data['accessToken'])
       Cookies.set('refreshToken', response.data['refreshToken'])
       navigate('/')
+      await alert('로그인 성공')
       return response.data
     } catch (error) {
-      alert('로그인 실패')
+      await alert('로그인 실패', true)
     }
   }
 
@@ -40,11 +44,11 @@ const useLogin = () => {
       });
 
       console.log(response.data)
-      alert('회원가입 성공')
+      await alert('회원가입 성공')
       navigate('/login')
       return response.data
     } catch (error) {
-      alert('회원가입 실패')
+      await alert('회원가입 실패', true)
     }
   }
 

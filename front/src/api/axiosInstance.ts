@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
   async (error: AxiosError) => {
     const originalRequest = error.config;
     // 401 에러 코드가 반환되었는지 확인합니다.
-    if (error.response && error.response.status === 401 && typeof originalRequest !== "undefined") {
+    if (error.response && error.response.status === 403 && typeof originalRequest !== "undefined") {
       try {
         const refreshToken = Cookies.get('refreshToken')
         // 토큰을 재발급 받는 API 호출
@@ -54,6 +54,8 @@ axiosInstance.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
+
+
     return Promise.reject(error);
   }
 );

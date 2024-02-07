@@ -16,6 +16,7 @@ import com.okestro.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,7 +73,7 @@ public class UserService {
                         .build());
     }
 
-    public void signUp(CreateUserRequest createUserRequest) {
+    public void signUp(@RequestBody CreateUserRequest createUserRequest) {
         Integer userId = userRepository.findUserIdByEmail(createUserRequest.getEmail());
         if (userId == null) {
             userRepository.signUp(CreateUserDto.builder()

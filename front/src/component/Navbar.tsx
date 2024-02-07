@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import symbol from "../etc/image/SYMBOL.png";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
-import {useIsLogin} from "../context";
+import {useIsLogin} from "../context/context";
 import './Navbar.css'
+import AlertContext from "../context/alert/AlertContext";
 
 function Navbar() {
+  const {alert} = useContext(AlertContext)
   const navigate = useNavigate();
   const {isLogin, setIsLogin} = useIsLogin();
 
-  const Logout = () => {
+  const Logout = async () => {
     Cookies.remove('accessToken')
     Cookies.remove('refreshToken')
     setIsLogin(false);
+    await alert('로그아웃 성공')
   }
 
   return (
