@@ -81,6 +81,7 @@ public class BoardService {
     }
 
     public Boolean isMine(Long boardId, Integer userId) {
+        System.out.println(Objects.equals(boardRepository.findBoardById(boardId).getUserId(), userId));
         return Objects.equals(boardRepository.findBoardById(boardId).getUserId(), userId);
     }
 }

@@ -5,7 +5,7 @@ import useBoard from "../../api/board";
 import Input from "../input/input";
 import InputText from "../input/InputText";
 import {UpdateBoardDto} from "../../api/Dto/boardDto";
-
+import {useIsLogin} from "../../context";
 interface modalInput {
   titleProps?: string | undefined,
   contentProps?: string | undefined,
@@ -14,6 +14,7 @@ interface modalInput {
 
 
 function  BoardCreateModal ({titleProps, contentProps, boardId}: modalInput)  {
+  const { isLogin } = useIsLogin();
   const { createBoard, updateBoard } = useBoard();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -22,7 +23,11 @@ function  BoardCreateModal ({titleProps, contentProps, boardId}: modalInput)  {
   const [content, setContent] = useState<string>(contentProps? contentProps : '');
 
   const showModal = () => {
-    setOpen(true);
+    if (isLogin) {
+      setOpen(true);
+    } else {
+      alert('로그인 해야 글을 작성하실 수 있습니다.');
+    }
   };
 
   const handleOk = async () => {

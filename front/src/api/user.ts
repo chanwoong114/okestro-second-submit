@@ -40,7 +40,8 @@ const useLogin = () => {
       });
 
       console.log(response.data)
-
+      alert('회원가입 성공')
+      navigate('/login')
       return response.data
     } catch (error) {
       alert('회원가입 실패')
