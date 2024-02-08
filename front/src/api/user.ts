@@ -44,8 +44,8 @@ const useLogin = () => {
       });
 
       console.log(response.data)
-      await alert('회원가입 성공')
       navigate('/login')
+      await alert('회원가입 성공')
       return response.data
     } catch (error) {
       await alert('회원가입 실패', true)
